@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("MainActivity", "Single Click at position " + position);
                 //create the new activity
                 Intent i = new Intent(MainActivity.this, EditActivity.class);
-                // pass the datat being edited
+                // pass the data being edited
                 i.putExtra(KEY_ITEM_TEXT, items.get(position));
                 i.putExtra(KEY_ITEM_POSITION, position);
                 // display the activity
@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String todoItem = etItem.getText().toString();
-                // Add item to the momdel
+                // Add item to the model
                 items.add(todoItem);
                 //Notify adapter that an item is inserted
                 itemsAdapter.notifyItemInserted(items.size() - 1);
@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
 
             // update the model at the right position with new item text
             items.set(position, itemText);
-            //notify thr adapter
+            //notify the adapter
             itemsAdapter.notifyItemChanged(position);
             // persist the changes
             saveItems();
@@ -126,6 +126,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    // This function saves items by writing them into the data file
     private void saveItems() {
         try {
             FileUtils.writeLines(getDataFile(), items);
@@ -134,6 +135,4 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
-    // This funvtion saves items by writinf them into the daya file
-
 }
